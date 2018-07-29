@@ -1,0 +1,21 @@
+.App-header {
+  height: 200px;
+  padding: 10px;
+  background: url("http://pngimg.com/uploads/star_wars_logo/star_wars_logo_PNG38.png");
+  /* background-size: contain; */
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+
+.App-header ul {
+  list-style: none;
+  margin: 0 auto;
+  text-align: center;
+  top: 150px;
+  position: relative;
+}
+
+.App-header li {
+  display: inline-block;
+  padding: 10px;
+}
