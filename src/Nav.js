@@ -13,7 +13,7 @@ export default class Nav extends Component {
     ];
     return (
       <div className="Nav"> 
-        <Links topics={names}/>
+        <Links topics={names} />
       </div>
     );
   }

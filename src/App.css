@@ -1,10 +1,10 @@
 .App-header {
   height: 200px;
-  padding: 10px;
+  padding: 5px;
   background: url("http://pngimg.com/uploads/star_wars_logo/star_wars_logo_PNG38.png");
   /* background-size: contain; */
   background-repeat: no-repeat;
-  background-position: top center;
+  background-position: center;
 }
 
 .App-header ul {
@@ -17,5 +17,17 @@
 
 .App-header li {
   display: inline-block;
-  padding: 10px;
+  padding: 35px 15px;
+}
+
+.App-content {
+  padding-top: 15px;
+  text-align: center;
+}
+
+#home {
+  height: 150px;
+  width: 100%;
+  top: 40px;
+  position: fixed;
 }
