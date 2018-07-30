@@ -6,15 +6,40 @@ import Content from './Content';
 import '../Styles/App.css';
 
 class App extends Component {
-  render() {
+  state = {
+    topics:[]
+  };
+  componentDidMount() {
     const topics = [
-      'People', 
-      'Planets', 
-      'Films', 
-      'Species', 
-      'Vehicles',
-      'Starships'
+      'people', 
+      'planets', 
+      'films', 
+      'species', 
+      'vehicles',
+      'starships'
     ];
+    const context = this;
+    topics.forEach((topic) => {
+      async function fetchData() {
+        const response = await fetch('https://swapi.co/api/' + topic);
+        const data = await response.json();
+        await context.setState({
+          topics: [
+            ...context.state.topics,
+            {
+            name: topic,
+            count: data.count, 
+            results: data.results,
+            next: data.next,
+            prev: data.previous
+          }]
+        });
+      }
+      fetchData();
+    });
+  }
+  render() {
+    const topics = this.state.topics.map((topic)=> topic.name);
     return (
       <BrowserRouter>
         <div className="App">
@@ -22,7 +47,7 @@ class App extends Component {
             <Link to="/">
               <div id="home"></div>
             </Link>
-            <Nav topics={topics} />
+            <Nav topics={topics.sort()} />
           </header>
           <div className="App-content">
             <Route exact path="/" component={Home} />
