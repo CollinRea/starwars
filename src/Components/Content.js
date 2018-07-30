@@ -23,31 +23,27 @@ export default class Content extends Component {
     }
     fetchData();
   }
-  render() {
+  componentToRender(){
     const match = this.props.match.params.topic;
-    let componentToRender = <h2>Loading...</h2>;
     switch (match) {
       case 'people':
-        componentToRender = <People />
-        break;
+        return <People />
       case 'planets':
-        componentToRender = <Planets />
-        break;
+        return <Planets />
       case 'films':
-        componentToRender = <Films />
-        break;
+        return <Films />
       case 'species':
-        componentToRender = <Species />
-        break;
+        return <Species />
       case 'vehicles':
-        componentToRender = <Vehicles />
-        break;
+        return <Vehicles />
       case 'starships':
-        componentToRender = <Starships />
-        break;
+        return <Starships />
       default:
-        componentToRender = <h2>No Data Found.</h2>
+        return <h2>No Data Found.</h2>
     }
+  }
+  render() {
+    let componentToRender = this.componentToRender() || <h2>Loading...</h2>;
     return (
       <div>{componentToRender}</div>
     )
