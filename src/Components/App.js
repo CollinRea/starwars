@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Link } from 'react-router-dom'
 import Nav from './Nav';
 import Content from './Content';
 
-import './App.css';
+import '../Styles/App.css';
 
 class App extends Component {
   render() {
