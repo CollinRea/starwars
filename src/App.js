@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom'
 import Nav from './Nav';
+import Content from './Content';
 
 import './App.css';
 
@@ -10,7 +11,9 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <header className="App-header">
-          <Link to="/"><div id="home"></div></Link>
+            <Link to="/">
+              <div id="home"></div>
+            </Link>
             <Nav/>
           </header>
           <div className="App-content">
@@ -24,7 +27,5 @@ class App extends Component {
 }
 
 const Home = () => <h2>Select a topic to explore the world of Star Wars!</h2>;
-
-const Content = ({match}) => <h2>{match.params.topic}</h2>;
 
 export default App;
