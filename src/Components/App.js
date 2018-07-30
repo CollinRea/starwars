@@ -7,6 +7,14 @@ import '../Styles/App.css';
 
 class App extends Component {
   render() {
+    const topics = [
+      'People', 
+      'Planets', 
+      'Films', 
+      'Species', 
+      'Vehicles',
+      'Starships'
+    ];
     return (
       <BrowserRouter>
         <div className="App">
@@ -14,7 +22,7 @@ class App extends Component {
             <Link to="/">
               <div id="home"></div>
             </Link>
-            <Nav/>
+            <Nav topics={topics} />
           </header>
           <div className="App-content">
             <Route exact path="/" component={Home} />

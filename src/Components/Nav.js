@@ -1,22 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default class Nav extends Component {
-  render() {
-    const names = [
-      'People', 
-      'Planets', 
-      'Films', 
-      'Species', 
-      'Vehicles',
-      'Starships'
-    ];
-    return (
-      <div className="Nav"> 
-        <Links topics={names} />
-      </div>
-    );
-  }
+const Nav = (props) => {
+  return (
+    <div className="Nav"> 
+      <Links topics={props.topics} />
+    </div>
+   );
 }
 
 const Links = ({topics}) => {
@@ -38,3 +28,5 @@ const NavLink = ({topic}) => {
     </li>
   )
 } 
+
+export default Nav;
