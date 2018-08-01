@@ -15,15 +15,17 @@ export default class People extends Component {
     const people = this.state.data.map((elem) => {
       const url = elem.url.substr(elem.url.indexOf("/people/")+1);
       return [
-        <div className="Content-cards">
-          <Link to={url}>{elem.name}</Link>
-        </div>
+        <Link to={url}>
+          <div className="Content-cards">
+            {elem.name}
+          </div>
+        </Link>
       ]
     });
     return (
       <div className="Content">
         <h2>People</h2>
-        {people}
+        {people.length ? people : 'Loading...' }
       </div>
     )
   }

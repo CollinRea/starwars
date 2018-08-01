@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export default class Starships extends Component {
   state = {data: []}
@@ -10,10 +11,20 @@ export default class Starships extends Component {
     }
   }
   render() {
+    const starships = this.state.data.map((elem) => {
+      const url = elem.url.substr(elem.url.indexOf("/starships/")+1);
+      return [
+        <Link to={url}>
+          <div className="Content-cards">
+            {elem.name}
+          </div>
+        </Link>
+      ]
+    });
     return (
       <div>
         <h2>Starships</h2>
-        <p>{this.state.data.length ? this.state.data[0].name : 'Loading...'}</p>
+        {starships.length ? starships : 'Loading...'}
       </div>
     )
   }

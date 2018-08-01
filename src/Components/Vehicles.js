@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export default class Vehicles extends Component {
   state = {data: []}
@@ -10,10 +11,20 @@ export default class Vehicles extends Component {
     }
   }
   render() {
+    const vehicles = this.state.data.map((elem) => {
+      const url = elem.url.substr(elem.url.indexOf("/vehicles/")+1);
+      return [
+        <Link to={url}>
+          <div className="Content-cards">
+            {elem.name}
+          </div>
+        </Link>
+      ]
+    });
     return (
       <div>
         <h2>Vehicles</h2>
-        <p>{this.state.data.length ? this.state.data[0].name : 'Loading...'}</p>
+        {vehicles.length ? vehicles : 'Loading...'}
       </div>
     )
   }
