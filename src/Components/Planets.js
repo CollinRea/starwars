@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class Planets extends Component {
   state = {data: []}
   static getDerivedStateFromProps(nextProps, prevState) {
-    const filteredData = nextProps.data.filter((topic)=>(topic.name === nextProps.match.params.topic));
+    const filteredData = nextProps.topics.filter((topic)=>(topic.name === nextProps.match.params.topic));
     if (filteredData.length > 0) {
       return {data: filteredData[0].data.results};
     } else {

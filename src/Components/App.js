@@ -7,19 +7,19 @@ import '../Styles/App.css';
 
 class App extends Component {
   state = {
-    topics:[]
-  };
-  componentDidMount() {
-    const topics = [
+    topicNames : [
       'people', 
       'planets', 
       'films', 
       'species', 
       'vehicles',
       'starships'
-    ];
+    ],
+    topics: []
+  };
+  componentDidMount() {
     const context = this;
-    topics.forEach((topic) => {
+    context.state.topicNames.forEach((topic) => {
       async function fetchData() {
         const response = await fetch('https://swapi.co/api/' + topic);
         const data = await response.json();
@@ -40,15 +40,13 @@ class App extends Component {
       fetchData();
     });
   }
+  componentDidUpdate(_, prevState){
+    console.log({prevState});
+  }
+  handleClick = (e) => {
+    this.setState({filter: e.target.innerHTML});
+  }
   render() {
-    const topics = [
-      'people', 
-      'planets', 
-      'films', 
-      'species', 
-      'vehicles',
-      'starships'
-    ];
     return (
       <BrowserRouter>
         <div className="App">
@@ -56,12 +54,15 @@ class App extends Component {
             <Link to="/">
               <div id="home"></div>
             </Link>
-            <Nav topics={topics.sort()} />
+            <Nav 
+              topics={this.state.topicNames.sort()} 
+              onClick={this.handleClick}
+             />
           </header>
           <div className="App-content">
             <Route exact path="/" component={Home} />
             <Route path="/:topic" render={(props) => 
-              (<Content {...props} data={this.state.topics}/>)} 
+              <Content {...props} topics={this.state.topics}/>} 
              />
           </div>
         </div>

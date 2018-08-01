@@ -4,14 +4,18 @@ import { Link } from 'react-router-dom';
 const Nav = (props) => {
   return (
     <div className="Nav"> 
-      <Links topics={props.topics} />
+      <Links {...props} />
     </div>
    );
 }
 
-const Links = ({topics}) => {
+const Links = ({topics, onClick}) => {
   const links = topics.map((topic) => (
-    <NavLink key={topic + 'Topic'} topic={topic} />
+    <NavLink 
+      key={topic + 'Topic'} 
+      topic={topic}
+      onClick={onClick} 
+    />
   ))
   return (
     <ul>
@@ -20,11 +24,15 @@ const Links = ({topics}) => {
   )
 }
 
-const NavLink = ({topic}) => {
+const NavLink = ({topic, onClick}) => {
   const topicURL = '/' + topic.toLowerCase();
   return (
     <li>
-      <Link to={topicURL}>{topic}</Link>
+      <Link 
+        to={topicURL} 
+        onClick={(e)=>onClick(e)}>
+        {topic}
+      </Link>
     </li>
   )
 } 
