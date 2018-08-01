@@ -25,21 +25,30 @@ class App extends Component {
         const data = await response.json();
         await context.setState({
           topics: [
-            ...context.state.topics,
-            {
-            name: topic,
-            count: data.count, 
-            results: data.results,
-            next: data.next,
-            prev: data.previous
-          }]
+            ...context.state.topics, {
+              name: topic,
+              data: {
+                count: data.count, 
+                results: data.results,
+                next: data.next,
+                prev: data.previous
+              }
+            }
+          ]
         });
       }
       fetchData();
     });
   }
   render() {
-    const topics = this.state.topics.map((topic)=> topic.name);
+    const topics = [
+      'people', 
+      'planets', 
+      'films', 
+      'species', 
+      'vehicles',
+      'starships'
+    ];
     return (
       <BrowserRouter>
         <div className="App">
@@ -51,7 +60,9 @@ class App extends Component {
           </header>
           <div className="App-content">
             <Route exact path="/" component={Home} />
-            <Route path="/:topic" component={Content} />
+            <Route path="/:topic" render={(props) => 
+              (<Content {...props} data={this.state.topics}/>)} 
+             />
           </div>
         </div>
       </BrowserRouter>
