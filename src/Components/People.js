@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Nav from './Nav';
 
 export default class People extends Component {
@@ -12,15 +13,17 @@ export default class People extends Component {
   }
   render() {
     const people = this.state.data.map((elem) => {
-      return {
-        name: elem.name, 
-        url: elem.url.substr(elem.url.indexOf("/people/")+1)
-      }
+      const url = elem.url.substr(elem.url.indexOf("/people/")+1);
+      return [
+        <div className="Content-cards">
+          <Link to={url}>{elem.name}</Link>
+        </div>
+      ]
     });
     return (
-      <div>
+      <div className="Content">
         <h2>People</h2>
-        <Nav topics={people}/>
+        {people}
       </div>
     )
   }

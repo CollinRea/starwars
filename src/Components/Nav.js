@@ -25,6 +25,7 @@ const Links = ({topics}) => {
 
 const NavLink = ({topic}) => {
   const topicURL = topic.url || '/' + topic.name.toLowerCase();
+  console.log(topic);
   return (
     <li>
       <Link to={topicURL}>
