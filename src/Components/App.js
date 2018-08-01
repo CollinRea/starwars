@@ -38,9 +38,6 @@ class App extends Component {
       });
     });
   }
-  handleClick = (e) => {
-    this.setState({filter: e.target.innerHTML});
-  }
   render() {
     return (
       <BrowserRouter>
@@ -57,10 +54,7 @@ class App extends Component {
           <div className="App-content">
             <Route exact path="/" component={Home} />
             <Route path="/:topic" render={(props) => 
-              <Content {...props} 
-                filter={this.state.filter} 
-                topics={this.state.topics}
-              />} 
+              <Content {...props} topics={this.state.topics} />} 
              />
           </div>
         </div>

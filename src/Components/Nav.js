@@ -9,12 +9,11 @@ const Nav = (props) => {
    );
 }
 
-const Links = ({topics, onClick}) => {
+const Links = ({topics}) => {
   const links = topics.map((topic) => (
     <NavLink 
       key={topic + 'Topic'} 
       topic={topic}
-      onClick={onClick} 
     />
   ))
   return (
@@ -24,13 +23,11 @@ const Links = ({topics, onClick}) => {
   )
 }
 
-const NavLink = ({topic, onClick}) => {
+const NavLink = ({topic}) => {
   const topicURL = '/' + topic.toLowerCase();
   return (
     <li>
-      <Link 
-        to={topicURL} 
-        onClick={(e)=>onClick(e)}>
+      <Link to={topicURL}>
         {topic}
       </Link>
     </li>

@@ -8,9 +8,7 @@ import Starships from './Starships';
 
 const Content = (props) => {
   const match = props.match.params.topic;
-  const filteredData = 
-    props.topics.filter((topic) =>
-      topic.topic === (props.filter || match));
+  const filteredData = props.topics.filter((topic) => topic.topic === match);
   switch (match) {
     case 'people':
       return <People data={filteredData[0]}/>
