@@ -15,33 +15,28 @@ class App extends Component {
       'vehicles',
       'starships'
     ],
-    topics: []
+    topics: [],
+    isLoading: false
   };
   componentDidMount() {
-    const context = this;
-    context.state.topicNames.forEach((topic) => {
+    this.setState({isLoading: true})
+    const promises = this.state.topicNames.map((topic) => {
       async function fetchData() {
         const response = await fetch('https://swapi.co/api/' + topic);
         const data = await response.json();
-        await context.setState({
-          topics: [
-            ...context.state.topics, {
-              name: topic,
-              data: {
-                count: data.count, 
-                results: data.results,
-                next: data.next,
-                prev: data.previous
-              }
-            }
-          ]
-        });
+        return {...data, topic: topic};
       }
-      fetchData();
+      // Return promise to set state once all topics have resolved
+      return fetchData();
     });
-  }
-  componentDidUpdate(_, prevState){
-    console.log({prevState});
+    Promise.all(promises).then((values)=> {
+      this.setState({isLoading: false});
+      values.forEach((topic)=> {
+        this.setState({
+          topics: [...this.state.topics, topic]
+        })
+      });
+    });
   }
   handleClick = (e) => {
     this.setState({filter: e.target.innerHTML});
@@ -62,7 +57,10 @@ class App extends Component {
           <div className="App-content">
             <Route exact path="/" component={Home} />
             <Route path="/:topic" render={(props) => 
-              <Content {...props} topics={this.state.topics}/>} 
+              <Content {...props} 
+                filter={this.state.filter} 
+                topics={this.state.topics}
+              />} 
              />
           </div>
         </div>
