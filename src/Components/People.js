@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Nav from './Nav';
 
 export default class People extends Component {
   state = {data: []}
@@ -9,11 +10,17 @@ export default class People extends Component {
       return prevState;
     }
   }
-  render() {;
+  render() {
+    const people = this.state.data.map((elem) => {
+      return {
+        name: elem.name, 
+        url: elem.url.substr(elem.url.indexOf("/people/")+1)
+      }
+    });
     return (
       <div>
         <h2>People</h2>
-        <p>{this.state.data.length ? this.state.data[0].name : 'Loading...'}</p>
+        <Nav topics={people}/>
       </div>
     )
   }

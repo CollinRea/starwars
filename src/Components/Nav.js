@@ -12,7 +12,7 @@ const Nav = (props) => {
 const Links = ({topics}) => {
   const links = topics.map((topic) => (
     <NavLink 
-      key={topic + 'Topic'} 
+      key={topic.name + 'Topic'} 
       topic={topic}
     />
   ))
@@ -24,11 +24,11 @@ const Links = ({topics}) => {
 }
 
 const NavLink = ({topic}) => {
-  const topicURL = '/' + topic.toLowerCase();
+  const topicURL = topic.url || '/' + topic.name.toLowerCase();
   return (
     <li>
       <Link to={topicURL}>
-        {topic}
+        {topic.name}
       </Link>
     </li>
   )
