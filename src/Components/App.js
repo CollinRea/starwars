@@ -8,12 +8,12 @@ import '../Styles/App.css';
 class App extends Component {
   state = {
     topicNames : [
-      'people', 
-      'planets', 
-      'films', 
-      'species', 
-      'vehicles',
-      'starships'
+      'People', 
+      'Planets', 
+      'Films', 
+      'Species', 
+      'Vehicles',
+      'Starships'
     ],
     topics: [],
     isLoading: false
@@ -22,9 +22,10 @@ class App extends Component {
     this.setState({isLoading: true})
     const promises = this.state.topicNames.map((topic) => {
       async function fetchData() {
-        const response = await fetch('https://swapi.co/api/' + topic);
+        const url = topic.toLowerCase();
+        const response = await fetch('https://swapi.co/api/' + url);
         const data = await response.json();
-        return {...data, topic: topic};
+        return {...data, topic: url};
       }
       // Return promise to set state once all topics have resolved
       return fetchData();
