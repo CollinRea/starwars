@@ -14,7 +14,7 @@ export default class Films extends Component {
     const films = this.state.data.map((elem) => {
       const url = elem.url.substr(elem.url.indexOf("/films/")+1);
       return [
-        <Link to={url}>
+        <Link to={url} key={url}>
           <div className="Content-cards">
             {elem.title}
           </div>

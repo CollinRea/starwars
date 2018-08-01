@@ -33,7 +33,6 @@
 }
 
 .Content-cards {
-  list-style: none;
   display: inline-flex;
   border: 1px solid grey;
   width: 33%;

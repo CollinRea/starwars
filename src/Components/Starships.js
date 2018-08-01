@@ -14,7 +14,7 @@ export default class Starships extends Component {
     const starships = this.state.data.map((elem) => {
       const url = elem.url.substr(elem.url.indexOf("/starships/")+1);
       return [
-        <Link to={url}>
+        <Link to={url} key={url}>
           <div className="Content-cards">
             {elem.name}
           </div>

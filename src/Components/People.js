@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Nav from './Nav';
 
 export default class People extends Component {
   state = {data: []}
@@ -15,7 +14,7 @@ export default class People extends Component {
     const people = this.state.data.map((elem) => {
       const url = elem.url.substr(elem.url.indexOf("/people/")+1);
       return [
-        <Link to={url}>
+        <Link to={url} key={url}>
           <div className="Content-cards">
             {elem.name}
           </div>
