@@ -53,4 +53,19 @@
   margin: 0 auto;
   margin-bottom: 20px;
   margin-top: 10px;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.GetMore:active {
+  color:black;
+  box-shadow: 0 0 5px -1px rgba(0,0,0,0.6);
+}
+
+.GetMore:hover {
+  background-color: rgb(212, 212, 212);
 }
