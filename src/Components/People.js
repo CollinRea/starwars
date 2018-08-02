@@ -7,7 +7,6 @@ export default class People extends Component {
     more: true
   }
   static getDerivedStateFromProps(nextProps, prevState) {
-    console.log(nextProps,prevState);
     if (nextProps.data && prevState.data.length === 0) {
       const more = nextProps.data.next ? true : false;
       return {
