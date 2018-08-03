@@ -1,28 +1,27 @@
 .App-header {
-  height: 200px;
+  height: 150px;
   padding: 5px;
   background: url("http://pngimg.com/uploads/star_wars_logo/star_wars_logo_PNG38.png");
-  /* background-size: contain; */
   background-repeat: no-repeat;
   background-position: center;
 }
 
-.App-header ul {
+.App-content {
+  text-align: center;
+}
+
+.Nav {
+  position: sticky;
+  top: 0;
   list-style: none;
   margin: 0 auto;
   text-align: center;
-  top: 150px;
-  position: relative;
+  background-color: white;
 }
 
-.App-header li {
+.Nav li {
   display: inline-block;
-  padding: 35px 15px;
-}
-
-.App-content {
-  padding-top: 15px;
-  text-align: center;
+  padding: 10px 15px;
 }
 
 #home {

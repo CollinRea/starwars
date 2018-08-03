@@ -44,10 +44,10 @@ class App extends Component {
             <Link to="/">
               <div id="home"></div>
             </Link>
-            <Nav 
-              topics={this.state.topicNames.sort()}
-             />
           </header>
+          <Nav
+          topics={this.state.topicNames.sort()}
+         />
           <div className="App-content">
             <Route exact path="/" component={Home} />
             <Route exact path="/:topic" render={(props) => 
