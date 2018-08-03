@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Route, Link } from 'react-router-dom';
+import ScrollToTop from './ScrollToTop';
 import Nav from './Nav';
 import Content from './Content';
 
@@ -39,25 +40,25 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div className="App">
-          <header className="App-header">
-            <Link to="/">
-              <div id="home"></div>
-            </Link>
-          </header>
-          <Nav
-          topics={this.state.topicNames.sort()}
-         />
-          <div className="App-content">
-            <Route exact path="/" component={Home} />
-            <Route exact path="/:topic" render={(props) => 
-              <Content 
-                {...props} 
-                topics={this.state.topics}/>} 
-             />
-             <Route path="/:topic/:id" render={(props) => <h2>Hi</h2>}/> 
+        <ScrollToTop>
+          <div className="App">
+            <header className="App-header">
+              <Link to="/">
+                <div id="home"></div>
+              </Link>
+            </header>
+            <Nav topics={this.state.topicNames.sort()} />
+            <div className="App-content">
+              <Route exact path="/" component={Home} />
+              <Route exact path="/:topic" render={(props) => 
+                <Content 
+                  {...props} 
+                  topics={this.state.topics}/>} 
+              />
+              <Route path="/:topic/:id" render={(props) => <h2>Hi</h2>}/> 
+            </div>
           </div>
-        </div>
+        </ScrollToTop>
       </BrowserRouter>
     );
   }
