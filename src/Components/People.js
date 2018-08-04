@@ -18,6 +18,17 @@ export default class People extends Component {
       return prevState;
     }
   }
+  componentDidMount(){
+    // Load state from local storage cache if available
+    const dataCache = JSON.parse(localStorage.getItem('dataCache'));
+    if (dataCache){
+      this.setState({
+        data: dataCache.people.data,
+        more: dataCache.people.more,
+        next: dataCache.people.next
+      });
+    }
+  }
   handleGetMore = async () => {
     if (this.props.data.count > this.state.data.length && this.state.next) {
       const resp = await fetch(this.state.next)
@@ -27,7 +38,15 @@ export default class People extends Component {
         data: [...this.state.data, ...data.results],
         next: data.next,
         more: more
-      })
+      });
+      // Save in localstorage as cache in order to not have to make API call
+      // for more if user leaves the page and come back
+      localStorage.setItem(
+        'dataCache', 
+        JSON.stringify({
+          people: {data: this.state.data, more: more, next: data.next}
+        })
+      );
     }
   }
   render() {
