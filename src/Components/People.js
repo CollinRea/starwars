@@ -64,7 +64,7 @@ export default class People extends Component {
       <div className="Content">
         <h2>People</h2>
         {people.length ? people : 'Loading...' }
-        {this.state.more && <div className="GetMore" onClick={this.handleGetMore}>More...</div>}
+        {this.state.more && <div className="btn" onClick={this.handleGetMore}>More...</div>}
       </div>
     )
   }

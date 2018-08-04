@@ -19,6 +19,8 @@ class App extends Component {
     topics: []
   };
   componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
+
     const promises = this.state.topicNames.map((topic) => {
       async function fetchData() {
         const url = topic.name.toLowerCase()
@@ -37,6 +39,23 @@ class App extends Component {
       });
     });
   }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+  handleToTop = () => {
+    window.scrollTo(0, 0);
+  }
+  handleGoBack = () => {
+    window.history.back();
+  }
+  handleScroll = (e) => {
+    const upBtn = document.querySelector('.scroll-up');
+    if (window.scrollY >= 200) {
+      upBtn.style.cssText = "transform: translate(150px);"
+    } else {
+      upBtn.style.cssText = "transform: translate(-150px);"
+    }
+  }
   render() {
     return (
       <BrowserRouter>
@@ -47,7 +66,19 @@ class App extends Component {
                 <div id="home"></div>
               </Link>
             </header>
-            <Nav topics={this.state.topicNames.sort()} />
+            <Nav topics={this.state.topicNames.sort()}>
+              <div 
+                className="btn scroll-up"
+                style={{"visbility":"hidden"}}
+                onClick={this.handleToTop}>
+                Up
+              </div>
+              <div 
+                className="btn go-back" 
+                onClick={this.handleGoBack}>
+                Back
+              </div>
+            </Nav>
             <div className="App-content">
               <Route exact path="/" component={Home} />
               <Route exact path="/:topic" render={(props) => 
@@ -55,7 +86,9 @@ class App extends Component {
                   {...props} 
                   topics={this.state.topics}/>} 
               />
-              <Route path="/:topic/:id" render={(props) => <h2>Hi</h2>}/> 
+              <Route 
+                path="/:topic/:id" 
+                render={(props) => <Detail {...props}/>}/>
             </div>
           </div>
         </ScrollToTop>
@@ -65,5 +98,20 @@ class App extends Component {
 }
 
 const Home = () => <h2>Select a topic to explore the world of Star Wars!</h2>;
+
+class Detail extends Component {
+  componentDidMount() {
+    const backBtn = document.querySelector('.go-back');
+    backBtn.style.cssText = "transform: translate(-150px);";
+  }
+  componentWillUnmount() {
+    const backBtn = document.querySelector('.go-back');
+    backBtn.style.cssText = "transform: translate(150px);";
+  }
+
+  render() {
+    return <h2>Under Construction</h2>
+  }
+}
 
 export default App;

@@ -40,13 +40,14 @@
   margin: 10px;
 }
 
-.GetMore {
+.btn {
   color:#444;
   border:1px solid #CCC;
   background:#DDD;
   box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
   cursor:pointer;
   max-width: 100px;
+  min-width: 50px;
   padding: 5px;
   text-align: center;
   margin: 0 auto;
@@ -60,11 +61,25 @@
   user-select: none;
 }
 
-.GetMore:active {
+.btn:active {
   color:black;
   box-shadow: 0 0 5px -1px rgba(0,0,0,0.6);
 }
 
-.GetMore:hover {
+.btn:hover {
   background-color: rgb(212, 212, 212);
+}
+
+.btn.scroll-up {
+  position: absolute;
+  margin-left: 10px;
+  left: -150px;
+  transition: all 0.5s ease-out;
+}
+
+.btn.go-back {
+  position: absolute;
+  margin-right: 10px;
+  right: -150px;
+  transition: all 0.5s ease-out;
 }
