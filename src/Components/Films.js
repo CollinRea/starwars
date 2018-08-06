@@ -45,7 +45,7 @@ export default class Films extends Component {
       <div>
         <h2>Films</h2>
         {films.length ? films : 'Loading...'}
-        {this.state.more && <div className="GetMore" onClick={this.handleGetMore}>More...</div>}
+        {this.state.more && <div className="btn" onClick={this.handleGetMore}>More...</div>}
       </div>
     )
   }

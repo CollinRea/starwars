@@ -10,6 +10,11 @@
   text-align: center;
 }
 
+/* .App-content a {
+  text-decoration: none;
+  color: rgb(59, 59, 59);
+} */
+
 .Nav {
   position: sticky;
   top: 0;
@@ -37,10 +42,6 @@
   color: rgb(59, 59, 59);
 }
 
-.Nav ul li.active-link>a{
-  text-decoration:underline;
-  color: red;
-}
 #home {
   height: 150px;
   width: 100%;
@@ -100,3 +101,4 @@
   right: -150px;
   transition: all 0.5s ease-out;
 }
+

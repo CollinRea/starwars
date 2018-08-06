@@ -45,7 +45,7 @@ export default class Species extends Component {
       <div>
         <h2>Species</h2>
         {species.length ? species : 'Loading...'}
-        {this.state.more && <div className="GetMore" onClick={this.handleGetMore}>More...</div>}
+        {this.state.more && <div className="btn" onClick={this.handleGetMore}>More...</div>}
       </div>
     )
   }

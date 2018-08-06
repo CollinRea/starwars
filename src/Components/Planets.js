@@ -45,7 +45,7 @@ export default class Planets extends Component {
       <div>
         <h2>Planets</h2>
         {planets.length ? planets : 'Loading...'}
-        {this.state.more && <div className="GetMore" onClick={this.handleGetMore}>More...</div>}
+        {this.state.more && <div className="btn" onClick={this.handleGetMore}>More...</div>}
       </div>
     )
   }

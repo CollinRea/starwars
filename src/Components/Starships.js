@@ -45,7 +45,7 @@ export default class Starships extends Component {
       <div>
         <h2>Starships</h2>
         {starships.length ? starships : 'Loading...'}
-        {this.state.more && <div className="GetMore" onClick={this.handleGetMore}>More...</div>}
+        {this.state.more && <div className="btn" onClick={this.handleGetMore}>More...</div>}
       </div>
     )
   }

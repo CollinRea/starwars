@@ -45,7 +45,7 @@ export default class Vehicles extends Component {
       <div>
         <h2>Vehicles</h2>
         {vehicles.length ? vehicles : 'Loading...'}
-        {this.state.more && <div className="GetMore" onClick={this.handleGetMore}>More...</div>}
+        {this.state.more && <div className="btn" onClick={this.handleGetMore}>More...</div>}
       </div>
     )
   }
