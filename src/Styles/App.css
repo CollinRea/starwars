@@ -42,6 +42,10 @@
   color: rgb(59, 59, 59);
 }
 
+.selected {
+  border-bottom: 1.5px solid red;
+}
+
 #home {
   height: 150px;
   width: 100%;

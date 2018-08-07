@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Nav = (props) => {
   return (
@@ -12,7 +12,7 @@ const Nav = (props) => {
 
 const Links = ({topics}) => {
   const links = topics.map((topic) => (
-    <NavLink 
+    <NavListItem 
       key={topic.name + 'Topic'} 
       topic={topic}
     />
@@ -24,13 +24,13 @@ const Links = ({topics}) => {
   )
 }
 
-const NavLink = ({topic}) => {
+const NavListItem = ({topic}) => {
   const topicURL = topic.url || '/' + topic.name.toLowerCase();
   return (
     <li>
-      <Link to={topicURL}>
+      <NavLink activeClassName="selected" to={topicURL}>
         {topic.name}
-      </Link>
+      </NavLink>
     </li>
   )
 } 

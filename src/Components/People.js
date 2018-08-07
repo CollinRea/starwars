@@ -19,6 +19,14 @@ export default class People extends Component {
     }
   }
   componentDidMount(){
+    (async () => {
+      const schemaResponse = await fetch('https://swapi.co/api/people/schema')
+      const schemaData = await schemaResponse.json()
+      this.setState({
+        schema: schemaData.required
+      });
+    })();
+
     // Load state from local storage cache if available
     const dataCache = JSON.parse(localStorage.getItem('dataCache'));
     if (dataCache){

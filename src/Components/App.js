@@ -16,17 +16,18 @@ class App extends Component {
       {name: 'Vehicles'},
       {name: 'Starships'}
     ],
-    topics: []
+    topics: [],
+    schemas: []
   };
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
 
     const promises = this.state.topicNames.map((topic) => {
       async function fetchData() {
-        const url = topic.name.toLowerCase()
-        const response = await fetch('https://swapi.co/api/' + url);
+        const subject = topic.name.toLowerCase()
+        const response = await fetch('https://swapi.co/api/' + subject);
         const data = await response.json();
-        return {...data, topic: url};
+        return {...data, topic: subject};
       }
       // Return promise to set state once all topics have resolved
       return fetchData();
@@ -35,6 +36,25 @@ class App extends Component {
       values.forEach((topic)=> {
         this.setState({
           topics: [...this.state.topics, topic]
+        })
+      });
+    });
+
+    const schemas = this.state.topicNames.map((topic) => {
+      async function fetchData() {
+        const subject = topic.name.toLowerCase()
+        const response = 
+          await fetch('https://swapi.co/api/' + subject + '/schema');
+        const schema = await response.json();
+        return {...schema, subject: subject};
+      }
+      // Return promise to set state once all topics have resolved
+      return fetchData();
+    });
+    Promise.all(schemas).then((values)=> {
+      values.forEach((topic)=> {
+        this.setState({
+          schemas: [...this.state.schemas, topic]
         })
       });
     });
@@ -88,7 +108,12 @@ class App extends Component {
               />
               <Route 
                 path="/:topic/:id" 
-                render={(props) => <Detail {...props}/>}/>
+                render={(props) =>{
+                  const match = props.match.params.topic;
+                  const schemaMatch = this.state.schemas.filter(schema => schema.subject === match)
+                  return <Detail {...props} schema={schemaMatch[0]}/>}
+                }
+              />
             </div>
           </div>
         </ScrollToTop>
