@@ -108,11 +108,7 @@ class App extends Component {
               />
               <Route 
                 path="/:topic/:id" 
-                render={(props) =>{
-                  const match = props.match.params.topic;
-                  const schemaMatch = this.state.schemas.filter(schema => schema.subject === match)
-                  return <Detail {...props} schema={schemaMatch[0]}/>}
-                }
+                render={(props) => <Detail {...props}/>}
               />
             </div>
           </div>
@@ -125,15 +121,22 @@ class App extends Component {
 const Home = () => <h2>Select a topic to explore the world of Star Wars!</h2>;
 
 class Detail extends Component {
+  state = {};
   componentDidMount() {
     const backBtn = document.querySelector('.go-back');
     backBtn.style.cssText = "transform: translate(-150px);";
+    this.loadStateFromUrlMatch();
+  }
+  loadStateFromUrlMatch = async () => {
+    const url = 'https://swapi.co/api' + this.props.match.url; 
+    const resp = await fetch(url);
+    const data = await resp.json();
+    this.setState({data});
   }
   componentWillUnmount() {
     const backBtn = document.querySelector('.go-back');
     backBtn.style.cssText = "transform: translate(150px);";
   }
-
   render() {
     return <h2>Under Construction</h2>
   }
