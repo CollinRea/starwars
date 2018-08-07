@@ -55,7 +55,12 @@ export default class People extends Component {
       return [
         <Link to={url} key={url}>
           <div className="Content-cards">
-            {elem.name}
+            <p className="Content-title">
+              {elem.name}
+            </p>
+            <p className="Content-show-detail">
+              click for details...
+            </p>
           </div>
         </Link>
       ]

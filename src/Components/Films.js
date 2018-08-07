@@ -36,7 +36,12 @@ export default class Films extends Component {
       return [
         <Link to={url} key={url}>
           <div className="Content-cards">
-            {elem.title}
+            <p className="Content-title">
+              {elem.title}
+            </p>
+            <p className="Content-show-detail">
+              click for details...
+            </p>
           </div>
         </Link>
       ]
