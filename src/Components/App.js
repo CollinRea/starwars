@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Link } from 'react-router-dom';
 import ScrollToTop from './ScrollToTop';
 import Nav from './Nav';
 import Content from './Content';
+import Detail from './Detail';
 
 import '../Styles/App.css';
 
@@ -119,27 +120,5 @@ class App extends Component {
 }
 
 const Home = () => <h2>Select a topic to explore the world of Star Wars!</h2>;
-
-class Detail extends Component {
-  state = {};
-  componentDidMount() {
-    const backBtn = document.querySelector('.go-back');
-    backBtn.style.cssText = "transform: translate(-150px);";
-    this.loadStateFromUrlMatch();
-  }
-  loadStateFromUrlMatch = async () => {
-    const url = 'https://swapi.co/api' + this.props.match.url; 
-    const resp = await fetch(url);
-    const data = await resp.json();
-    this.setState({data});
-  }
-  componentWillUnmount() {
-    const backBtn = document.querySelector('.go-back');
-    backBtn.style.cssText = "transform: translate(150px);";
-  }
-  render() {
-    return <h2>Under Construction</h2>
-  }
-}
 
 export default App;
