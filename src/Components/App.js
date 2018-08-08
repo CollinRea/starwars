@@ -17,8 +17,7 @@ class App extends Component {
       {name: 'Vehicles'},
       {name: 'Starships'}
     ],
-    topics: [],
-    schemas: []
+    topics: []
   };
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
@@ -37,25 +36,6 @@ class App extends Component {
       values.forEach((topic)=> {
         this.setState({
           topics: [...this.state.topics, topic]
-        })
-      });
-    });
-
-    const schemas = this.state.topicNames.map((topic) => {
-      async function fetchData() {
-        const subject = topic.name.toLowerCase()
-        const response = 
-          await fetch('https://swapi.co/api/' + subject + '/schema');
-        const schema = await response.json();
-        return {...schema, subject: subject};
-      }
-      // Return promise to set state once all topics have resolved
-      return fetchData();
-    });
-    Promise.all(schemas).then((values)=> {
-      values.forEach((topic)=> {
-        this.setState({
-          schemas: [...this.state.schemas, topic]
         })
       });
     });
