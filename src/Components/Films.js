@@ -31,7 +31,10 @@ export default class Films extends Component {
     }
   }
   render() {
-    const films = this.state.data.map((elem) => {
+    const sortByEpisodeId = (elem1, elem2) => {
+      return (elem1.episode_id - elem2.episode_id);
+    }
+    const films = this.state.data.sort(sortByEpisodeId).map((elem) => {
       const url = elem.url.substr(elem.url.indexOf("/films/")+1);
       return [
         <Link to={url} key={url}>

@@ -132,11 +132,11 @@
 
 .details-title {
   width: 250px;
-  text-align: left;
+  align-self: stretch;
+  margin-right: 50px;
 }
 
 .details-specifics {
   text-align: left;
-  width: 250px;
-
+  width: 300px;
 }
