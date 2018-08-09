@@ -49,9 +49,43 @@ export default class Detail extends Component {
 }
 
 const personTemplate = (data) => {
-  const dataDisplay = Object.keys(data).map((key, index) => {
-    return <p key={key + index}>{key} : {data[key]}</p>
-  });
+  const dataDisplay = (
+    <div className="details-container">
+      <h1 className="details-title">{data.name}</h1>
+      <table className="details-specifics">
+        <tbody>
+          <tr>
+            <td>Height: </td>
+            <td>{data.height}</td>
+          </tr>
+          <tr>
+            <td>Mass: </td>
+            <td>{data.mass}</td>
+          </tr>
+          <tr>
+            <td>Hair Color: </td>
+            <td>{data.hair_color}</td>
+          </tr>
+          <tr>
+            <td>Skin Color: </td>
+            <td>{data.skin_color}</td>
+          </tr>
+          <tr>
+            <td>Eye Color: </td>
+            <td>{data.eye_color}</td>
+          </tr>
+          <tr>
+            <td>Birth Year: </td>
+            <td>{data.birth_year}</td>
+          </tr>
+          <tr>
+            <td>Gender: </td>
+            <td>{data.gender}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  );
   return dataDisplay;
 }
 
