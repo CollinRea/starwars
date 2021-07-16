@@ -25,7 +25,7 @@ class App extends Component {
     const promises = this.state.topicNames.map((topic) => {
       async function fetchData() {
         const subject = topic.name.toLowerCase()
-        const response = await fetch('https://swapi.co/api/' + subject);
+        const response = await fetch('https://swapi.dev/api/' + subject);
         const data = await response.json();
         return {...data, topic: subject};
       }
