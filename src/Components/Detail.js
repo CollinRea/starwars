@@ -12,7 +12,7 @@ export default class Detail extends Component {
     this.loadStateFromUrlMatch();
   }
   loadStateFromUrlMatch = async () => {
-    const url = 'https://swapi.co/api' + this.props.match.url; 
+    const url = 'https://swapi.dev/api' + this.props.match.url; 
     const resp = await fetch(url);
     const data = await resp.json();
     this.setState({data});
